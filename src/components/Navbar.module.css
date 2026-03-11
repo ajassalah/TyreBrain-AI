@@ -1,0 +1,243 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.25rem 2rem;
+  transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(5, 8, 16, 0.92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+  padding: 0.85rem 2rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+
+.inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logoIcon svg {
+  animation: spin 20s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.5));
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.logoText {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.logoTyre { color: #FFFFFF; }
+.logoBrain { color: #00D4FF; }
+.logoAi {
+  color: #F5A623;
+  font-size: 1.1rem;
+}
+
+/* Desktop Nav */
+.desktopNav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.navLink {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #A8B2C1;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+  white-space: nowrap;
+}
+
+.navLink:hover,
+.navLink.active {
+  color: #FFFFFF;
+  background: rgba(0, 212, 255, 0.08);
+}
+
+.navLink.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 2px;
+  background: #00D4FF;
+  border-radius: 1px;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.ctaBtn {
+  font-size: 0.85rem;
+  padding: 0.65rem 1.4rem;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 6px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #A8B2C1;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger.hamburgerOpen span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  background: #00D4FF;
+}
+.hamburger.hamburgerOpen span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.hamburgerOpen span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  background: #00D4FF;
+}
+
+/* Mobile Overlay */
+.mobileOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: rgba(5, 8, 16, 0.97);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+}
+
+.mobileOverlay.mobileOverlayOpen {
+  transform: translateX(0);
+}
+
+.mobileInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  padding: 6rem 2rem 3rem;
+  gap: 3rem;
+  max-width: 480px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: 0.01em;
+  transition: all 0.2s ease;
+  opacity: 0;
+  animation: slideIn 0.4s ease forwards;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.mobileNavLink:hover {
+  color: #00D4FF;
+  padding-left: 0.5rem;
+}
+
+.mobileNavIndex {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: #00D4FF;
+  opacity: 0.6;
+}
+
+.mobileFooter {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.mobileLocation {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #5A6478;
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .desktopNav { gap: 0; }
+  .navLink { padding: 0.45rem 0.6rem; font-size: 0.82rem; }
+}
+
+@media (max-width: 768px) {
+  .desktopNav { display: none; }
+  .hamburger { display: flex; }
+  .navbar { padding: 1rem 1.25rem; }
+  .navbar.scrolled { padding: 0.75rem 1.25rem; }
+  .ctaBtn { display: none; }
+}
