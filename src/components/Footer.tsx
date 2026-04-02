@@ -75,12 +75,18 @@ export default function Footer() {
               </svg>
               contact@tyrebrainai.com
             </a>
-            <p className={styles.footerText}>
+            <a href="tel:+447448667347" className={styles.footerLink}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+              +447448667347
+            </a>
+            <p className={styles.footerText} style={{ alignItems: 'flex-start' }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true" style={{ flexShrink: 0, marginTop: '4px' }}>
                 <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/>
                 <circle cx="12" cy="10" r="3"/>
               </svg>
-              United Kingdom
+              12 The Pines, Hook Road, Chessingtom, United Kingdom, KT9 1EB
             </p>
             <Link href="/contact" className={`btn btn-primary ${styles.demoBtn}`}>
               Book a Demo
@@ -95,7 +101,7 @@ export default function Footer() {
           </p>
           <p className={styles.bottomNote}>
             <span className={styles.monoText}>v1.0.0</span>
-            &nbsp;·&nbsp; Built by industry insiders. Powered by frontier AI.
+            &nbsp;·&nbsp; Built by industry insiders. Powered by Levelweb.co.uk.
           </p>
           <div className={styles.bottomLinks}>
             <Link href="/privacy" className={styles.bottomLink}>Privacy</Link>

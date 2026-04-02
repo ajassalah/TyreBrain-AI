@@ -10,7 +10,7 @@ const ParticleField = dynamic(() => import('@/components/ParticleField'), { ssr:
 const TyreVisual = dynamic(() => import('@/components/TyreVisual'), { ssr: false });
 
 const STATS = [
-  { value: '12', suffix: '+', label: 'Years Industry Experience', sub: 'Tyre sector expertise' },
+  { value: '14', suffix: '+', label: 'Years Industry Experience', sub: 'Tyre sector expertise' },
   { value: '18', suffix: 'mo', label: 'Traditional R&D Cycle', sub: 'Compressed by AI' },
   { value: '1B', suffix: '+', label: 'Compound Permutations', sub: 'Explored per optimisation run' },
 ];
@@ -68,9 +68,8 @@ const PILLARS = [
 ];
 
 const TRUST_ITEMS = [
-  'Michelin Tyre PLC',
   'University of Gloucestershire MBA',
-  '12+ Years Industry Experience',
+  '14+ Years Industry Experience',
   'United Kingdom HQ',
 ];
 
@@ -342,7 +341,7 @@ export default function HomePage() {
       <section className={styles.trustSection} aria-label="Trust Indicators">
         <div className="container">
           <p className={styles.trustTagline}>
-            &ldquo;Built by an industry insider. Powered by frontier AI.&rdquo;
+            &ldquo;Built by an industry insider. Powered by Levelweb.co.uk.&rdquo;
           </p>
           <div className={styles.trustBar}>
             {TRUST_ITEMS.map((item, i) => (

@@ -5,7 +5,7 @@ import styles from './page.module.css';
 export const metadata: Metadata = {
   title: 'About — TyreBrain AI | Randeer Sandaruwan, Founder & CEO',
   description:
-    'Meet Randeer Sandaruwan — 12+ years in the tyre industry, Michelin Tyre PLC, MBA from University of Gloucestershire. TyreBrain AI is the platform he wished existed.',
+    'Meet Randeer Sandaruwan — 14+ years in the tyre industry, MBA from University of Gloucestershire. TyreBrain AI is the platform he wished existed.',
 };
 
 const CREDENTIALS = [
@@ -16,17 +16,13 @@ const CREDENTIALS = [
   },
   {
     icon: '📜',
-    title: 'Level 7 Diploma',
+    title: 'Level 7 Diploma Data science',
     sub: 'Strategic Management',
   },
-  {
-    icon: '🏭',
-    title: 'Michelin Tyre PLC',
-    sub: 'United Kingdom Operations',
-  },
+
   {
     icon: '🕐',
-    title: '12+ Years',
+    title: '14+ Years',
     sub: 'Tyre Industry Experience',
   },
 ];
@@ -38,7 +34,7 @@ const TIMELINE = [
     desc: 'Hands-on experience across commercial and passenger tyre segments. Deep exposure to the constraints of traditional compound development.',
   },
   {
-    period: 'Michelin Tyre PLC',
+    period: 'Global Tyre Leader',
     role: 'Senior Fleet Management',
     desc: 'Managing enterprise-scale fleet tyre performance, safety, and compliance. Daily exposure to the gap between what compounds could be and what traditional R&D delivers.',
   },

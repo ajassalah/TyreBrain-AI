@@ -1021,9 +1021,9 @@
 
 .sidebarLoc {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
-  color: #5A6478;
+  color: #A8B2C1;
   font-size: 0.875rem;
 }
 
