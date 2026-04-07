@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import styles from './page.module.css';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'About — TyreBrain AI | Randeer Sandaruwan, Founder & CEO',
@@ -16,8 +17,8 @@ const CREDENTIALS = [
   },
   {
     icon: '📜',
-    title: 'Level 7 Diploma Data science',
-    sub: 'Strategic Management',
+    title: 'Level 7 Diploma Data Science Strategic Management',
+    //sub: 'Strategic Management',
   },
 
   {
@@ -39,7 +40,7 @@ const TIMELINE = [
     desc: 'Managing enterprise-scale fleet tyre performance, safety, and compliance. Daily exposure to the gap between what compounds could be and what traditional R&D delivers.',
   },
   {
-    period: 'MBA & Level 7',
+    period: 'MBA & Level 7 Data Science',
     role: 'University of Gloucestershire',
     desc: 'Formalised strategic thinking and business architecture. Developed the commercial framework for TyreBrain AI alongside deep technical development.',
   },
@@ -77,12 +78,15 @@ export default function AboutPage() {
 
             <div className={`reveal-right ${styles.founderCard}`}>
               <div className={styles.founderAvatar} aria-label="Randeer Sandaruwan, Founder">
-                <svg width="100" height="100" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-                  <circle cx="50" cy="50" r="49" stroke="#00D4FF" strokeWidth="1" strokeDasharray="3 2" />
-                  <circle cx="50" cy="38" r="18" fill="rgba(0,212,255,0.15)" stroke="#00D4FF" strokeWidth="1" />
-                  <path d="M15 95 Q50 70 85 95" fill="rgba(0,212,255,0.1)" stroke="#00D4FF" strokeWidth="1" />
-                  <text x="50" y="42" textAnchor="middle" fill="#00D4FF" fontSize="18" fontWeight="600">RS</text>
-                </svg>
+                <Image
+                  src="/dp.jpeg"
+                  alt="Randeer Sandaruwan"
+                  fill
+                  sizes="110px"
+                  style={{ objectFit: 'cover' }}
+                  className={styles.avatarImage}
+                  priority
+                />
               </div>
               <h2 className={styles.founderName}>Randeer Sandaruwan</h2>
               <p className={styles.founderRole}>Founder &amp; CEO — TyreBrain AI</p>

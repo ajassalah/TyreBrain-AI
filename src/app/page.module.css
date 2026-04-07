@@ -11,6 +11,12 @@
   justify-content: center;
   overflow: hidden;
   padding: 9rem 2rem 5rem;
+  background-image: 
+    linear-gradient(rgba(5, 8, 16, 0.7), rgba(5, 8, 16, 0.7)),
+    url('/tyre-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .particleBg {

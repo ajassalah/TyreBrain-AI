@@ -12,12 +12,19 @@
 .heroBg {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(0, 212, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(rgba(5, 8, 16, 0.85), rgba(5, 8, 16, 0.85)),
+    url('/tyre-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   pointer-events: none;
-  mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+  z-index: 0;
+}
+
+.hero > :not(.heroBg):not([aria-hidden="true"]) {
+  position: relative;
+  z-index: 1;
 }
 
 .heroH1 {
@@ -733,9 +740,40 @@
 }
 
 .founderAvatar {
-  margin: 0 auto 1.25rem;
-  width: 100px;
-  height: 100px;
+  margin: 0 auto 1.5rem;
+  width: 110px;
+  height: 110px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.founderAvatar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 212, 255, 0.4);
+  animation: rotateDashed 20s linear infinite;
+}
+
+@keyframes rotateDashed {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.avatarImage {
+  border-radius: 50%;
+  width: 90px !important;
+  height: 90px !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%);
+  border: 2px solid #00D4FF;
+  box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+  z-index: 2;
+  position: absolute !important;
 }
 
 .founderName {

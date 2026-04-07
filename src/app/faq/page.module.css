@@ -12,12 +12,19 @@
 .heroBg {
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(0, 212, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 212, 255, 0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background-image: 
+    linear-gradient(rgba(5, 8, 16, 0.85), rgba(5, 8, 16, 0.85)),
+    url('/tyre-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   pointer-events: none;
-  mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
+  z-index: 0;
+}
+
+.hero > :not(.heroBg):not([aria-hidden="true"]) {
+  position: relative;
+  z-index: 1;
 }
 
 .heroH1 {
