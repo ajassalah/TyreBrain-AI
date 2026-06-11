@@ -1,0 +1,23 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .spin {
+      transform-origin: 32px 32px;
+      animation: spin 20s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  </style>
+  <rect width="64" height="64" rx="14" fill="#050810"/>
+  <g class="spin">
+    <circle cx="32" cy="32" r="22" stroke="#00D4FF" stroke-width="3" stroke-dasharray="7 4"/>
+    <circle cx="32" cy="32" r="13" stroke="#00D4FF" stroke-width="2" opacity="0.55"/>
+    <path d="M32 9V55" stroke="#00D4FF" stroke-width="1.2" opacity="0.28"/>
+    <path d="M9 32H55" stroke="#00D4FF" stroke-width="1.2" opacity="0.28"/>
+    <path d="M15.7 15.7L48.3 48.3" stroke="#00D4FF" stroke-width="1" opacity="0.18"/>
+    <path d="M48.3 15.7L15.7 48.3" stroke="#00D4FF" stroke-width="1" opacity="0.18"/>
+  </g>
+  <circle cx="32" cy="32" r="6" fill="#00D4FF"/>
+  <circle cx="32" cy="32" r="3" fill="#050810" opacity="0.7"/>
+</svg>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import styles from './Navbar.module.css';
 
 const NAV_LINKS = [
@@ -17,17 +18,33 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('/');
   const menuRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const scrollY = window.scrollY;
+      const isHome = pathname === '/';
+      const trustSection = document.getElementById('trust-bar');
+      const trustReached = trustSection
+        ? trustSection.getBoundingClientRect().top <= window.innerHeight * 0.72
+        : false;
+
+      setScrolled(scrollY > 20);
+      setHidden(isHome && scrollY > 40 && !trustReached && !menuOpen);
     };
+
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener('resize', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, [pathname, menuOpen]);
 
   useEffect(() => {
     if (menuOpen) {
@@ -44,7 +61,7 @@ export default function Navbar() {
 
   return (
     <>
-      <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ''}`} role="banner">
+      <header className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${hidden ? styles.hidden : ''}`} role="banner">
         <div className={styles.inner}>
           {/* Logo */}
           <Link href="/" className={styles.logo} aria-label="TyreBrain AI Home">

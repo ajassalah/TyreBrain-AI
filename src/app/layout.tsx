@@ -3,11 +3,21 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollReveal from '@/components/ScrollReveal';
+import {
+  CONTACT_EMAIL,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  absoluteUrl,
+} from '@/lib/site';
+
+const title = 'TyreBrain AI - Quantum-Driven Autonomous Tyre Intelligence';
 
 export const metadata: Metadata = {
-  title: 'TyreBrain AI — Quantum-Driven Autonomous Tyre Intelligence',
-  description:
-    "TyreBrain AI is the world's first AI-native platform engineering self-adaptive, multi-layered tyre compounds that dynamically optimise grip, stiffness, and contact behaviour across all driving conditions.",
+  metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
+  title,
+  description: SITE_DESCRIPTION,
   keywords: [
     'tyre design AI',
     'compound optimisation',
@@ -18,42 +28,111 @@ export const metadata: Metadata = {
     'tyre SaaS platform',
     'TyreBrain AI',
   ],
+  alternates: {
+    canonical: '/',
+    types: {
+      'application/rss+xml': absoluteUrl('/rss.xml'),
+    },
+  },
+  manifest: '/manifest.webmanifest',
+  icons: {
+    icon: [
+      { url: '/icon.svg?v=3', type: 'image/svg+xml' },
+      { url: '/favicon.svg?v=3', type: 'image/svg+xml' },
+    ],
+    shortcut: '/icon.svg?v=3',
+    apple: '/icon.svg?v=3',
+  },
   openGraph: {
-    title: 'TyreBrain AI — Quantum-Driven Autonomous Tyre Intelligence',
-    description:
-      "The world's first AI-native tyre design platform. Generative compound intelligence, quantum-inspired optimisation, and digital twin simulation.",
+    title,
+    description: SITE_DESCRIPTION,
+    url: '/',
     type: 'website',
     locale: 'en_GB',
-    siteName: 'TyreBrain AI',
+    siteName: SITE_NAME,
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'TyreBrain AI autonomous tyre intelligence platform',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TyreBrain AI — Quantum-Driven Autonomous Tyre Intelligence',
-    description: "The world's first AI-native tyre design platform.",
+    title,
+    description: SITE_DESCRIPTION,
+    images: ['/twitter-image'],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
   },
 };
 
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: 'TyreBrain AI',
-  description: "The world's first AI-native tyre design and optimisation platform.",
-  url: 'https://tyrebrainai.com',
-  foundingDate: '2024',
-  founder: {
-    '@type': 'Person',
-    name: 'Randeer Sandaruwan',
-    jobTitle: 'Founder & CEO',
-  },
-  address: {
-    '@type': 'PostalAddress',
-    addressCountry: 'GB',
-  },
-  sameAs: [],
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': absoluteUrl('/#organization'),
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: absoluteUrl('/opengraph-image'),
+      email: CONTACT_EMAIL,
+      foundingDate: '2024',
+      founder: {
+        '@type': 'Person',
+        name: 'Randeer Sandaruwan',
+        jobTitle: 'Founder & CEO',
+      },
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '12 The Pines, Hook Road',
+        addressLocality: 'Chessington',
+        postalCode: 'KT9 1EB',
+        addressCountry: 'GB',
+      },
+      sameAs: [],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': absoluteUrl('/#website'),
+      name: SITE_NAME,
+      url: SITE_URL,
+      publisher: {
+        '@id': absoluteUrl('/#organization'),
+      },
+      inLanguage: 'en-GB',
+    },
+    {
+      '@type': 'SoftwareApplication',
+      '@id': absoluteUrl('/#software'),
+      name: SITE_NAME,
+      applicationCategory: 'BusinessApplication',
+      operatingSystem: 'Web',
+      description: SITE_DESCRIPTION,
+      url: SITE_URL,
+      publisher: {
+        '@id': absoluteUrl('/#organization'),
+      },
+      offers: {
+        '@type': 'Offer',
+        availability: 'https://schema.org/InStock',
+        priceCurrency: 'GBP',
+        price: '0',
+        description: 'Private demonstration available on request.',
+      },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -76,6 +155,9 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
         <Navbar />
         <ScrollReveal />
         <main id="main-content">{children}</main>

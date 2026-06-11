@@ -1190,6 +1190,13 @@
   font-family: 'JetBrains Mono', monospace;
 }
 
+.formError {
+  color: #F5A623;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .successCard {
   padding: 3rem;
   text-align: center;
@@ -1214,6 +1221,14 @@
   font-size: 0.95rem;
   line-height: 1.7;
   max-width: 380px;
+}
+
+.successMeta {
+  color: #0AF0C8;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  max-width: 360px;
 }
 
 /* ──────────────────── RESPONSIVE ──────────────────── */

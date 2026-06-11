@@ -2,6 +2,60 @@
   overflow-x: hidden;
 }
 
+/* ━━━━━━━━━━━━━━━━━━━━ INTRO VIDEO ━━━━━━━━━━━━━━━━━━━━ */
+.introVideoStage {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  width: 100vw;
+  height: 100dvh;
+  background: #030609;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.introVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: contrast(1.08) saturate(1.04);
+}
+
+.introVideoShade {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at center, transparent 52%, rgba(3, 6, 9, 0.42) 100%),
+    linear-gradient(180deg, rgba(3, 6, 9, 0.1), rgba(3, 6, 9, 0.32));
+}
+
+.skipIntro {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 2;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 6px;
+  background: rgba(3, 6, 9, 0.68);
+  color: #FFFFFF;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  backdrop-filter: blur(12px);
+}
+
+.skipIntro:hover {
+  border-color: #00D4FF;
+  color: #00D4FF;
+}
+
 /* ━━━━━━━━━━━━━━━━━━━━ HERO ━━━━━━━━━━━━━━━━━━━━ */
 .hero {
   position: relative;
@@ -12,7 +66,7 @@
   overflow: hidden;
   padding: 9rem 2rem 5rem;
   background-image: 
-    linear-gradient(rgba(5, 8, 16, 0.7), rgba(5, 8, 16, 0.7)),
+    linear-gradient(rgba(5, 8, 16, 0.84), rgba(5, 8, 16, 0.84)),
     url('/tyre-bg.jpg');
   background-size: cover;
   background-position: center;
@@ -180,6 +234,79 @@
   height: 520px;
   animation: fadeIn 1s 0.3s ease both;
   position: relative;
+}
+
+.heroVideoShell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 8px;
+  background: rgba(5, 8, 16, 0.72);
+  border: 1px solid rgba(0, 212, 255, 0.16);
+  box-shadow:
+    0 28px 80px rgba(0, 0, 0, 0.42),
+    0 0 52px rgba(0, 212, 255, 0.12);
+}
+
+.heroVideoShell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(5, 8, 16, 0.22), transparent 28%, transparent 72%, rgba(5, 8, 16, 0.3)),
+    linear-gradient(180deg, rgba(0, 212, 255, 0.08), transparent 32%, rgba(5, 8, 16, 0.4));
+  pointer-events: none;
+}
+
+.heroVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: contrast(1.08) saturate(1.05);
+}
+
+.heroVideoScan {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 100% 34px, 34px 100%;
+  mix-blend-mode: screen;
+  opacity: 0.36;
+}
+
+.heroVideoLabel {
+  position: absolute;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem 0.9rem;
+  background: rgba(5, 8, 16, 0.68);
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  backdrop-filter: blur(12px);
+}
+
+.heroVideoLabel span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #00D4FF;
+}
+
+.heroVideoLabel strong {
+  color: #FFFFFF;
+  font-size: 0.92rem;
+  font-weight: 600;
 }
 
 .scrollIndicator {
@@ -604,6 +731,15 @@
 }
 
 @media (max-width: 768px) {
+  .introVideo {
+    object-fit: contain;
+  }
+  .skipIntro {
+    right: 1rem;
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    padding: 0.65rem 0.9rem;
+    font-size: 0.75rem;
+  }
   .hero { padding: 7rem 1.25rem 4rem; }
   .statsGrid { grid-template-columns: 1fr; }
   .pillarsGrid { grid-template-columns: 1fr; }

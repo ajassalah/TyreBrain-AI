@@ -13,6 +13,14 @@ const INDUSTRIES = [
   'Other',
 ];
 
+const DEMO_TYPES = [
+  'Full Platform Walkthrough',
+  'Compound Generation',
+  'Digital Twin Simulation',
+  'Wear & Thermal Modelling',
+  'Enterprise Access',
+];
+
 export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
@@ -20,10 +28,12 @@ export default function ContactPage() {
     title: '',
     email: '',
     industry: '',
+    demoType: '',
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -31,11 +41,43 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError('');
+
+    const form = e.currentTarget as HTMLFormElement;
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
     setSubmitting(true);
-    // Simulate submission (replace with Formspree/EmailJS integration)
-    await new Promise((res) => setTimeout(res, 1200));
-    setSubmitted(true);
-    setSubmitting(false);
+
+    try {
+      const response = await fetch('/api/demo-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => null);
+        throw new Error(data?.message || 'Unable to submit your demo request.');
+      }
+
+      setSubmitted(true);
+      setFormData({
+        name: '',
+        company: '',
+        title: '',
+        email: '',
+        industry: '',
+        demoType: '',
+        message: '',
+      });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Unable to submit your demo request.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -133,10 +175,13 @@ export default function ContactPage() {
                       <polyline points="20 6 9 17 4 12"/>
                     </svg>
                   </div>
-                  <h2 className={styles.successTitle}>Request Received</h2>
+                  <h2 className={styles.successTitle}>Demo Request Received</h2>
                   <p className={styles.successDesc}>
-                    Thank you for your interest. Our team will be in touch within 24 hours to 
-                    arrange your private platform demonstration.
+                    Thank you. Your request is active and our team will be in touch within
+                    24 hours to arrange your private platform demonstration.
+                  </p>
+                  <p className={styles.successMeta}>
+                    A confirmation has been prepared for contact@tyrebrainai.com.
                   </p>
                   <button className="btn btn-secondary" onClick={() => setSubmitted(false)}>
                     Submit Another Request
@@ -146,7 +191,6 @@ export default function ContactPage() {
                 <form
                   className={`card ${styles.form}`}
                   onSubmit={handleSubmit}
-                  noValidate
                   aria-label="Book a Demo Form"
                 >
                   <h2 className={styles.formTitle}>Book a Private Demo</h2>
@@ -233,6 +277,28 @@ export default function ContactPage() {
                   </div>
 
                   <div className="form-group">
+                    <label className="form-label" htmlFor="demoType">Demo Interest *</label>
+                    <div className={styles.selectWrap}>
+                      <select
+                        id="demoType"
+                        name="demoType"
+                        className="form-select"
+                        required
+                        value={formData.demoType}
+                        onChange={handleChange}
+                      >
+                        <option value="">Select the demo you want...</option>
+                        {DEMO_TYPES.map((demo) => (
+                          <option key={demo} value={demo}>{demo}</option>
+                        ))}
+                      </select>
+                      <svg className={styles.selectChevron} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                        <polyline points="6 9 12 15 18 9"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <div className="form-group">
                     <label className="form-label" htmlFor="message">
                       Message / What are you looking to solve?
                     </label>
@@ -267,6 +333,12 @@ export default function ContactPage() {
                       </>
                     )}
                   </button>
+
+                  {error && (
+                    <p className={styles.formError} role="alert">
+                      {error}
+                    </p>
+                  )}
 
                   <p className={styles.formNote}>
                     Your information is kept strictly confidential and never shared with third parties.
