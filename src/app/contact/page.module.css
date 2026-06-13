@@ -1268,3 +1268,167 @@
   .form { padding: 1.5rem; }
   .heroText { margin-bottom: 0; }
 }
+
+/* Responsive hardening for all inner-page modules */
+.heroContent,
+.positioningGrid,
+.featuresGrid,
+.tiersGrid,
+.pillarGrid,
+.industryGrid,
+.pillarsGrid,
+.quotesGrid,
+.faqGrid,
+.formGrid {
+  min-width: 0;
+}
+
+.heroContent > *,
+.positioningGrid > *,
+.featuresGrid > *,
+.tiersGrid > *,
+.pillarGrid > *,
+.industryGrid > *,
+.pillarsGrid > *,
+.quotesGrid > *,
+.faqGrid > *,
+.formGrid > * {
+  min-width: 0;
+}
+
+.heroGlow1,
+.heroGlow2,
+.heroGlowGreen,
+.creditsGlow,
+.pillarGlow,
+.whyGlow,
+.ctaGlow {
+  max-width: 100vw;
+}
+
+.tag,
+.badge,
+.creditNote,
+.tierFeature,
+.sidebarLink,
+.sidebarLoc,
+.contactItemValue {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 1200px) {
+  .heroContent,
+  .pillarGrid,
+  .industryGrid,
+  .quotesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .positioningGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 7rem 1rem 4rem;
+  }
+
+  .positioningSection,
+  .featuresSection,
+  .creditsSection,
+  .platformCta,
+  .pillarSection,
+  .industrySection,
+  .industryCta,
+  .visionSection,
+  .pillarsSection,
+  .timelineSection,
+  .sustainCta,
+  .quotesSection,
+  .whySection,
+  .faqSection {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .positioningGrid,
+  .featuresGrid,
+  .tiersGrid,
+  .pillarsGrid,
+  .quotesGrid,
+  .faqGrid,
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .posCard,
+  .pillarCard,
+  .founderCard,
+  .faqSidebar,
+  .form,
+  .successCard,
+  .vision {
+    padding: 1.25rem;
+  }
+
+  .heroCtas,
+  .trustBadges,
+  .industryTags,
+  .featureTags,
+  .pillarTags {
+    align-items: stretch;
+  }
+
+  .heroCtas :global(.btn),
+  .platformCta :global(.btn),
+  .industryCta :global(.btn),
+  .techCta :global(.btn),
+  .sustainCta :global(.btn),
+  .faqSidebar :global(.btn),
+  .form :global(.btn),
+  .successCard :global(.btn),
+  .whyContent :global(.btn) {
+    width: 100%;
+  }
+
+  .pillarVisualCard {
+    padding: 1.25rem;
+    border-radius: 14px;
+  }
+
+  .tierCredits {
+    flex-wrap: wrap;
+  }
+
+  .timelineItem {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .timelineLeft,
+  .timelineRight {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: left;
+  }
+
+  .faqQuestion {
+    align-items: flex-start;
+  }
+
+  .faqQ {
+    gap: 0.65rem;
+  }
+
+  .faqAnswerText {
+    padding-left: 0;
+  }
+
+  .contactItemValue,
+  .sidebarLink,
+  .sidebarLoc {
+    font-size: 0.84rem;
+  }
+}
