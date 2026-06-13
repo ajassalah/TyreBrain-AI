@@ -67,7 +67,7 @@
   padding: 9rem 2rem 5rem;
   background-image: 
     linear-gradient(rgba(5, 8, 16, 0.84), rgba(5, 8, 16, 0.84)),
-    url('/tyre-bg.jpg');
+    url('/hero-bg.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -731,6 +731,11 @@
 }
 
 @media (max-width: 768px) {
+  .hero {
+    background-image:
+      linear-gradient(rgba(5, 8, 16, 0.84), rgba(5, 8, 16, 0.84)),
+      url('/hero-bg-mobile.webp');
+  }
   .introVideo {
     object-fit: contain;
   }

@@ -138,6 +138,7 @@ export default function HomePage() {
   useScrollReveal();
 
   const [introActive, setIntroActive] = useState(false);
+  const [enhanceHero, setEnhanceHero] = useState(false);
 
   // Typing animation
   const typingRef = useRef<HTMLSpanElement>(null);
@@ -156,10 +157,15 @@ export default function HomePage() {
     }
 
     setIntroActive(true);
+  }, []);
 
-    if (introVideoRef.current) {
-      introVideoRef.current.playbackRate = 0.72;
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
     }
+
+    const timeout = window.setTimeout(() => setEnhanceHero(true), 1200);
+    return () => window.clearTimeout(timeout);
   }, []);
 
   useEffect(() => {
@@ -221,11 +227,11 @@ export default function HomePage() {
             ref={introVideoRef}
             className={styles.introVideo}
             src={"/Exploded_tire_technical_diagram_\u2026_202606112007.mp4"}
-            poster="/tyre-bg.jpg"
+            poster="/hero-bg.webp"
             autoPlay
             muted
             playsInline
-            preload="auto"
+            preload="metadata"
             onLoadedMetadata={(event) => {
               event.currentTarget.playbackRate = 0.72;
             }}
@@ -246,7 +252,7 @@ export default function HomePage() {
       {/* ━━━━━━━━━━━━━━━━━━━━ HERO ━━━━━━━━━━━━━━━━━━━━ */}
       <section className={styles.hero} id="hero" aria-label="Hero Section">
         <div className={styles.particleBg} aria-hidden="true">
-          <ParticleField />
+          {enhanceHero && <ParticleField />}
         </div>
 
         {/* Radial glow layers */}
@@ -344,7 +350,7 @@ export default function HomePage() {
           </div>
 
           <div className={styles.heroVisual} aria-hidden="true">
-            <TyreVisual />
+            {enhanceHero && <TyreVisual />}
           </div>
         </div>
 
